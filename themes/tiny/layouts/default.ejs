@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/site-header') %>
+
+<main>
+  
+  <div class="article-content">
+    <%- body %>
+  </div>
+
+  <div class="page-meta">
+    <div class="page-date">
+      <%- page.date %>
+    </div>
+  </div>
+  
+</main>
+
+<%- include('../partials/comments') %>
+<%- include('../partials/site-footer') %>
+</body>
+</html>

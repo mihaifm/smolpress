@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<%- include('../partials/admin-header', {active: 'settings'}) %>
+
+<main>
+  <form action="/settings" method="post">
+    <fieldset>
+      <label for="title">Site title</label>
+      <input type="text" id="title" name="title" value="<%- title %>"/>
+      <label for="description">Site description</label>
+      <input type="text" id="description"  name="description" value="<%- description %>"/>
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" value="<%- author %>"/>
+      <label for="theme">Theme</label>
+      <input type="text" id="theme" name="theme" value="<%- theme %>"/>
+      <input type="submit" value="Update Settings" />
+      <p><%- locals.message ? message : "" %></p>
+    </div>
+    </fieldset>
+  </form>
+</main>
+
+</body>
+
+</html>

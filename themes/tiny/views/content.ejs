@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<%- include('../partials/admin-header', {active: 'content'}) %>
+
+<main>
+  <form class="new-post" action="/posts" method="post">
+    <fieldset>
+      <label for="title">New post</label>
+      <input type="text" id="title" placeholder="Title" name="title" autofocus />
+      <input type="submit" value="Create" />
+    </fieldset>
+  </form>
+
+  <% for (var page of pages) { %>
+    <div class="page">
+      <div class="page-url">
+        <a href="<%- page.url %>"><%- page.title %></a>
+      </div>
+      <div class="page-edit">
+        <a href="<%- page.url + '/edit' %>">Edit</a>
+      </div>
+    </div>
+  <% } %>
+
+</main>
+</body>
+</html>

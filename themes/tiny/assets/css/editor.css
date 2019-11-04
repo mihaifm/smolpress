@@ -1,0 +1,15 @@
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.editor-save {
+  margin-left: 6px;
+  margin-top: 2px;
+  font-family: inherit;
+  font-size: 1.05em;
+}
+
+.cm-formatting-header-2:only-child {
+  font-size: 100% !important;
+  font-weight: normal !important;
+}

@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/simplemde.min.css">
+    <link rel="stylesheet" href="/css/editor.css">
+    <script src="/js/simplemde.min.js"></script>
+</head>
+
+<body>
+  <form action="<%= saveurl %>" method="post">
+    <textarea name="content"><%= content %></textarea>
+  </form>
+
+  <script>
+      var simplemde = new SimpleMDE({spellChecker: false});
+      simplemde.value();
+      var input = document.createElement("input");
+      input.setAttribute('type', 'submit');
+      input.setAttribute('value', 'Save');
+      input.setAttribute('class', 'editor-save');
+      document.getElementsByClassName('editor-toolbar')[0].appendChild(input);
+  </script>
+</body>
+
+</html>

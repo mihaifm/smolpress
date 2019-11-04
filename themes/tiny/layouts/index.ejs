@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/site-header') %>
+
+<main>
+
+  <% if (pages.length > 0) { %>
+    <% for (var page of pages) { %>
+      <div class="page">
+        <div class="page-url">
+          <a href="<%- page.url %>"><%- page.title %></a>
+        </div>
+        <% if (page.date) { %>
+          <div class="page-date">
+              <%- page.date %>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  <% } else { %>
+    <h1>Welcome to your smol website!</h1>
+    <p>Visit the <a href="/admin">admin</a> panel to create your first post.</p>
+  <% } %>
+
+</main>
+
+<%- include('../partials/site-footer') %>
+</body>
+</html>

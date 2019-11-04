@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<main>
+  <form action="/signup" method="post">
+    <fieldset>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autofocus /><br />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+      <label for="passconfirm">Confirm Password</label>
+      <input type="password" id="passconfirm" name="passconfirm" />
+      <input type="submit" value="Create account" />
+    </fieldset>
+  </form>
+</main>
+
+</body>
+</html>

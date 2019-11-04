@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<main>
+  <form action="/login" method="post">
+    <fieldset>
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" autofocus />
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" />
+      <input type="submit" value="Login" />
+    </fieldset>
+  </form>
+</main>
+
+</body>
+</html>

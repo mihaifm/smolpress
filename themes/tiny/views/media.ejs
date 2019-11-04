@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<%- include('../partials/admin-header', {active: 'media'}) %>
+
+<main>
+  <form method="post" action="/upload" enctype="multipart/form-data">
+    <fieldset>
+      <label for="image">New media</label>
+      <input type="file" id="image" name="image" />
+      <div class="image-resize">
+        <label>
+            <input type="checkbox" name="resize" id="resize" value="Resize" />Resize
+        </label>
+        <label for="width">w</label>
+        <input type="text" name="width" id="width" value="800"/>
+        <label for="height">h</label>
+        <input type="text" name="height" id="height" />
+      </div>
+      <input type="submit" name="upload" value="Upload"/>
+    </fieldset>
+  </form>
+
+  <div class="images">
+    <% for (var image of images) { %>
+      <div class="image">
+        <a href="<%- image.url %>"><%- image.name %></a>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+</body>
+</html>
