@@ -39,7 +39,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(builder.dirs.out));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({
-  secret: process.env['SMOL_SESSION_SECRET'] || utils.randomString(16),
+  secret: process.env['SMOLPRESS_SESSION_SECRET'] || utils.randomString(16),
   resave: false,
   saveUninitialized: false
 }));
@@ -187,6 +187,6 @@ app.post('/upload', ensureLogin(), multer.single('image'), function (req, res){
 
 builder.build();
 
-var listener = app.listen(process.env['SMOL_PORT'] || 3939, () => {
+var listener = app.listen(process.env['SMOLPRESS_PORT'] || 3939, () => {
   console.log(`Server started on port ${listener.address().port}`)
 });

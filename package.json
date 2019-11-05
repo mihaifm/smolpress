@@ -1,10 +1,11 @@
 {
-  "name": "smol",
-  "version": "1.2.0",
+  "name": "smolpress",
+  "version": "1.0.0",
   "description": "Smol Website Builder",
-  "repository": "mihaifm/smol",
+  "repository": "mihaifm/smolpress",
   "author": "Mihai Ciuraru <hi@mihai.fm>",
   "keywords": [
+    "smolpress",
     "smol",
     "website",
     "site",
@@ -15,7 +16,7 @@
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "smol": "cli.js"
+    "smolpress": "cli.js"
   },
   "engines": {
     "node": ">=10.0.0"
