@@ -70,8 +70,13 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', (req, res) => {
   if (req.body.password == req.body.passconfirm) {
-    users.create(req.body.username, req.body.password);
-    res.redirect('/login');
+    if (req.body.username.length == 0) {
+      res.send("Username cannot be blank");
+    }
+    else {
+      users.create(req.body.username, req.body.password);
+      res.redirect('/login');
+    }
   }
   else {
     res.send("Passwords don't match. Hit back and try again");
