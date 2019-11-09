@@ -26,16 +26,16 @@ A node.js server is used to provide some dynamic content like comments, image up
 
 ### How does it compare to a static site generator (SSG) ?
 
-Smol is also a static site generator and supports ejs templates in addition to markdown files. To statically generate the site simply start the server.
-While Smol runs on a node.js server to provide some dynamic features, your posts are statically generated at all time so you can move them to a different web server if you feel the need.
+Smolpress is also a static site generator and supports ejs templates in addition to markdown files. To statically generate the site simply start the server.
+While smolpress runs on a node.js server to provide some dynamic features, your posts are statically generated at all time so you can move them to a different web server if you feel the need.
 
-Compared to an SSG, Smol provides an online markdown editor so you can edit your posts using your own website rather than using an external editor and fiddling with live-reload or deploy scripts.
+Compared to an SSG, smolpress provides an online markdown editor so you can edit your posts using your own website rather than using an external editor and fiddling with live-reload or deploy scripts.
 
 ### How does it compare to a content management system (CMS) ?
 
-Smol is very similar to a CMS, in the sense that you can manage your content from an online interface. However it is smaller, much smaller than a real CMS like Wordpress.
+Smolpress is very similar to a CMS, in the sense that you can manage your content from an online interface. However it is smaller, much smaller than a real CMS like Wordpress.
 
-With Smol all posts sit nicely on the disk written in Markdown and are not deeply burried inside a database. In fact Smol does not even require a database.
+With smolpress all posts sit nicely on the disk written in Markdown and are not deeply burried inside a database. In fact smolpress does not even require a database.
 
 ## Getting started
 
@@ -74,7 +74,7 @@ Images can be uploaded via the `/media` link in the admin panel. New images are 
 
 ### Page front matter
 
-Smol uses [front-matter](https://jekyllrb.com/docs/front-matter/) to add metadata to your pages. Any property name is supported and can be later used in the theme for customization.
+Smolpress uses [front-matter](https://jekyllrb.com/docs/front-matter/) to add metadata to your pages. Any property name is supported and can be later used in the theme for customization.
 The `layout`, `title` and `date` properties are supported by the default theme.
 
 ### Comments
@@ -84,9 +84,9 @@ There is no anti-spam protection so use it at your own risk. However it should b
 
 ### Themes
 
-Themes are based on [ejs](https://ejs.co/) templates and are placed in the `themes` folder. Smol has a default theme called `tiny`. Changing the theme can be done in the `/settings`
+Themes are based on [ejs](https://ejs.co/) templates and are placed in the `themes` folder. Smolpress has a default theme called `tiny`. Changing the theme can be done in the `/settings`
 panel.     
-It is recommended to make a copy of the default theme and naming it to something else before making and customizations to the site. This way you won't lose any changes when updating Smol.
+It is recommended to make a copy of the default theme and naming it to something else before making and customizations to the site. This way you won't lose any changes when updating smolpress.
 
 ### RSS
 

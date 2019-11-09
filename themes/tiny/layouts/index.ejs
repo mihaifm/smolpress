@@ -8,8 +8,10 @@
 
 <main>
 
-  <% if (pages.length > 0) { %>
-    <% for (var page of pages) { %>
+  <% var ipages = pages.filter(p => p.index !== false) %>
+
+  <% if (ipages.length > 0) { %>
+    <% for (var page of ipages) { %>
       <div class="page">
         <div class="page-url">
           <a href="<%- page.url %>"><%- page.title %></a>
