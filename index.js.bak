@@ -113,18 +113,10 @@ app.post('/settings', ensureLogin(), (req, res) => {
 app.post('/posts', ensureLogin(), (req, res) => {
   var slug = utils.slugify(req.body.title);
   var filename = `${builder.dirs.src}/pages/${slug}.md`;
-  
-  var draft = '';
-  if (req.body.draft) {
-    draft = 'draft: true\n';
-  }
-
-  var metadata = `---\ntitle: ${req.body.title}\n${draft}---\n# ${req.body.title}`;
-  fs.writeFileSync(filename, metadata);
+  fs.writeFileSync(filename, `---\ntitle: ${req.body.title}\n---\n# ${req.body.title}`);
 
   builder.buildPage(`${slug}.md`);
   builder.buildIndex();
-  
   res.redirect("/" + slug + "/edit");
 });
 
@@ -144,14 +136,9 @@ app.get('/:slug/edit', ensureLogin(), (req, res) => {
 app.post('/:slug/save', ensureLogin(), (req, res) => {
   var filename = `${builder.dirs.src}/pages/${req.params.slug}.md`;
   fs.writeFileSync(filename, req.body.content);
-  var page = builder.buildPage(`${req.params.slug}.md`);
+  builder.buildPage(`${req.params.slug}.md`);
   builder.buildIndex();
-  if (page.draft) {
-    res.redirect("/" + req.params.slug + "/edit");
-  }
-  else {
-    res.redirect("/" + req.params.slug);
-  }
+  res.redirect("/" + req.params.slug);
 })
 
 app.post('/:slug/comments', (req, res) => {

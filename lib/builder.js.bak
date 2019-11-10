@@ -125,7 +125,7 @@ function buildPage(file) {
   pageDict[filePath.name] = Object.assign({ utctime, url: filePath.name }, pageData.attributes);
 
   if (pageData.attributes.draft) {
-    return pageDict[filePath.name];
+    return;
   }
 
   const completePage = ejs.render(
@@ -139,8 +139,6 @@ function buildPage(file) {
   );
 
   fs.writeFileSync(`${destPath}/index.html`, completePage);
-
-  return pageDict[filePath.name];
 }
 
 function getPages() {

@@ -249,7 +249,6 @@ input[type=submit] {
   display: inline-block;
   width: 50px;
   margin-right: 10px; }
-
 .new-post-draft label {
   display: inline-block;
   font-size: 1.4rem;

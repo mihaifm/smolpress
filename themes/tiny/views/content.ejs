@@ -13,6 +13,11 @@
     <fieldset>
       <label for="title">New post</label>
       <input type="text" id="title" placeholder="Title" name="title" autofocus />
+      <div class="new-post-draft">
+        <label>
+          <input type="checkbox" name="draft" id="draft" value="Draft" />Draft
+        </label>
+      </div>
       <input type="submit" value="Create" />
     </fieldset>
   </form>
@@ -20,7 +25,11 @@
   <% for (var page of pages) { %>
     <div class="page">
       <div class="page-url">
-        <a href="<%- page.url %>"><%- page.title %></a>
+        <% if (page.draft) { %>
+          <a href="<%- page.url + '/edit' %>"><%- page.title %> [draft]</a>
+        <% } else { %>
+          <a href="<%- page.url %>"><%- page.title %></a>
+        <% } %>
       </div>
       <div class="page-edit">
         <a href="<%- page.url + '/edit' %>">Edit</a>

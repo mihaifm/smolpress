@@ -8,8 +8,7 @@
 
 <main>
 
-  <% var dpages = pages.filter(p => p.draft !== true) %>
-  <% var ipages = dpages.filter(p => p.index !== false) %>
+  <% var ipages = pages.filter(p => p.index !== false) %>
 
   <% if (ipages.length > 0) { %>
     <% for (var page of ipages) { %>
