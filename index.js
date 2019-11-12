@@ -1,5 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
+const serveStatic = require('serve-static');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const ensureLogin = require('connect-ensure-login').ensureLoggedIn;
@@ -39,7 +41,16 @@ var app = express();
 
 app.set('views', `themes/${config.theme}/views`);
 app.set('view engine', 'ejs');
-app.use(express.static(builder.dirs.out));
+
+app.use(serveStatic(builder.dirs.out, {
+  setHeaders: (res, reqpath) => {
+    if (utils.isTextFile(reqpath)) {
+      res.setHeader('Content-Type', 'text/plain');
+      res.setHeader('Content-Disposition', `inline; filename="${path.parse(reqpath).base}"`);
+    }
+  }
+}));
+
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({
   secret: process.env['SMOLPRESS_SESSION_SECRET'] || utils.randomString(16),
@@ -49,6 +60,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Routes
 app.get('/admin', ensureLogin(), (req, res) => {
   res.redirect('/content');
 })
