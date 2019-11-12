@@ -237,6 +237,17 @@ input[type=submit] {
 .new-post fieldset {
   width: 50%; }
 
+.image-rename label {
+  display: inline-block;
+  font-size: 1.4rem;
+  margin-right: 10px;
+  margin-left: 10px; }
+
+.image-rename input[type=text] {
+  display: inline-block;
+  margin-right: 10px;
+  width: 50%; }
+
 .image-resize label {
   display: inline-block;
   font-size: 1.4rem; }

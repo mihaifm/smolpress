@@ -193,8 +193,9 @@ app.get('/media', ensureLogin(), (req, res) => {
   res.render('media', Object.assign({user: req.user, images}, builder.getConfig()));
 })
 
-app.post('/upload', ensureLogin(), multer.single('image'), function (req, res){
-  var imagePath = `${builder.dirs.src}/media/${req.file.originalname}`;
+app.post('/upload', ensureLogin(), multer.single('image'), function (req, res) {
+  var filename = req.body.rename ? req.body.rename : req.file.originalname;
+  var imagePath = `${builder.dirs.src}/media/${filename}`;
 
   var w = req.body.width ? parseInt(req.body.width) : null;
   var h = req.body.height ? parseInt(req.body.height) : null;
@@ -204,7 +205,7 @@ app.post('/upload', ensureLogin(), multer.single('image'), function (req, res){
       fit: sharp.fit.inside, 
       withoutEnlargement: true 
     }).toFile(imagePath, (err, info) => {
-      fs.copyFile(imagePath, `${builder.dirs.out}/media/${req.file.originalname}`, (err) => {
+      fs.copyFile(imagePath, `${builder.dirs.out}/media/${filename}`, (err) => {
         if (err) throw err;
       });
 
@@ -212,7 +213,7 @@ app.post('/upload', ensureLogin(), multer.single('image'), function (req, res){
     });
   } else {
     fs.writeFileSync(imagePath, req.file.buffer);
-    fs.copyFile(imagePath, `${builder.dirs.out}/media/${req.file.originalname}`, (err) => {
+    fs.copyFile(imagePath, `${builder.dirs.out}/media/${filename}`, (err) => {
       if (err) throw err;
     });
 
