@@ -6,3 +6,4 @@ db/*
 data/*
 prep.bat
 checklist.txt
+*.bak
