@@ -201,7 +201,7 @@ app.post('/upload', ensureLogin(), multer.single('image'), function (req, res) {
   var h = req.body.height ? parseInt(req.body.height) : null;
 
   if (req.body.resize) {
-    sharp(req.file.buffer).resize(w, h, { 
+    sharp(req.file.buffer).rotate().resize(w, h, {
       fit: sharp.fit.inside, 
       withoutEnlargement: true 
     }).toFile(imagePath, (err, info) => {
