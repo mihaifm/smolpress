@@ -177,10 +177,13 @@ app.post('/:slug/comments', (req, res) => {
     fs.writeFileSync(filename, "[]");
   }
 
-  comments.push({name: req.body.name, text: req.body.text, id: Date.now()})
-  fs.writeFileSync(filename, JSON.stringify(comments));
+  if (comments.length < builder.getConfig().maxComments) {
+    comments.push({name: req.body.name, text: req.body.text, id: Date.now()})
+    fs.writeFileSync(filename, JSON.stringify(comments));
 
-  builder.buildPage(`${req.params.slug}.md`);
+    builder.buildPage(`${req.params.slug}.md`);
+  }
+
   res.redirect("/" + req.params.slug + "#comments");
 })
 
