@@ -102,6 +102,7 @@ RSS feed is generated automatically for the entire site. RSS fields can be confi
 * __SMOLPRESS_SRC_PATH__ - path to the markdown page sources. Default: `source`
 * __SMOLPRESS_OUTPUT_PATH__ - path to the generated static files. Default: `public`
 * __SMOLPRESS_DATA_PATH__ - path to the data folder. Default: `data`
+* __SMOLPRESS_THEMES_PATH__ - path to the themes folder. Default: `themes`
 * __SMOLPRESS_KEEP_LIST__ - comma separated list of files/folders to be kept when cleaning the output folder
 
 #### Site metadata
