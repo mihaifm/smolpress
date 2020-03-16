@@ -1,4 +1,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><%= locals.page && page.title ? `${page.title} | ` : '' %>Smol Website</title>
+<title><%= locals.page && page.title ? `${page.title} | ` : '' %><%= config.title %></title>
+<meta name="author" content="<%= config.author %>">
+<% if (locals.page && page.description) { %>
+  <meta name="description" content="<%= page.description %>" >
+<% } %>
+<meta name="generator" content="<%= config.generatorVersion %>">
 <link rel="stylesheet" href="/css/style.css">

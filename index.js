@@ -66,19 +66,19 @@ app.get('/admin', ensureLogin(), (req, res) => {
 })
 
 app.get('/content', ensureLogin(), (req, res) => {
-  res.render('content', { user: req.user, pages: builder.getPages() });
+  res.render('content', { user: req.user, pages: builder.getPages(), config: builder.getConfig() });
 });
 
 app.get('/login', (req, res) => {
   if (users.empty())
     res.redirect('signup');
   else
-    res.render('login');
+    res.render('login', {config: builder.getConfig()});
 });
 
 app.get('/signup', (req, res) => {
   if (users.empty())
-    res.render('signup');
+    res.render('signup', {config: builder.getConfig()});
   else
     res.redirect('/');
 });
@@ -109,7 +109,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/settings', ensureLogin(), (req, res) => {
-  res.render('settings', Object.assign({user: req.user}, builder.getConfig()));
+  res.render('settings', Object.assign({user: req.user}, {config: builder.getConfig()}));
 });
 
 app.post('/settings', ensureLogin(), (req, res) => {
@@ -117,7 +117,7 @@ app.post('/settings', ensureLogin(), (req, res) => {
   builder.build();
   config = builder.getConfig();
   app.set('views', `${builder.dirs.themes}/${config.theme}/views`);
-  var viewData = Object.assign({user: req.user}, config);
+  var viewData = Object.assign({user: req.user}, {config: builder.getConfig()});
   viewData.message = status;
   res.render('settings', viewData);
 });
@@ -144,6 +144,7 @@ app.get('/:slug/edit', ensureLogin(), (req, res) => {
   var filename = `${builder.dirs.src}/pages/${req.params.slug}.md`;
   if (fs.existsSync(filename)) {
     res.render('editor', {
+      config: builder.getConfig(),
       content: fs.readFileSync(filename, 'utf8'),
       saveurl: `/${req.params.slug}/save`
     });
@@ -193,7 +194,7 @@ app.get('/media', ensureLogin(), (req, res) => {
     images.push({name: file, url: `/media/${file}`})
   })
 
-  res.render('media', Object.assign({user: req.user, images}, builder.getConfig()));
+  res.render('media', Object.assign({user: req.user, images}, {config: builder.getConfig()}));
 })
 
 app.post('/upload', ensureLogin(), multer.single('image'), function (req, res) {

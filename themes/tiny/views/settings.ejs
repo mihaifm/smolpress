@@ -12,13 +12,13 @@
   <form action="/settings" method="post">
     <fieldset>
       <label for="title">Site title</label>
-      <input type="text" id="title" name="title" value="<%- title %>"/>
+      <input type="text" id="title" name="title" value="<%- config.title %>"/>
       <label for="description">Site description</label>
-      <input type="text" id="description"  name="description" value="<%- description %>"/>
+      <input type="text" id="description"  name="description" value="<%- config.description %>"/>
       <label for="author">Author</label>
-      <input type="text" id="author" name="author" value="<%- author %>"/>
+      <input type="text" id="author" name="author" value="<%- config.author %>"/>
       <label for="theme">Theme</label>
-      <input type="text" id="theme" name="theme" value="<%- theme %>"/>
+      <input type="text" id="theme" name="theme" value="<%- config.theme %>"/>
       <input type="submit" value="Update Settings" />
       <p><%- locals.message ? message : "" %></p>
     </div>
