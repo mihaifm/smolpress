@@ -99,7 +99,7 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/login' }),
   (req, res) => { res.redirect('/content'); }
 );
 
