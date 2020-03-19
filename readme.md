@@ -67,7 +67,7 @@ SMOLPRESS_VAULT_PASSWORD environment variable. User password is also hashed with
 
 ### Markdown editing
 
-You can edit any post by visiting the `/admin` panel and clicking the `Edit` link for any post. The [SimpleMDE](https://simplemde.com/) editor will help you get the job done. Click `Save` to have the post converted to html.
+You can edit any post by visiting the `/admin` panel and clicking the `Edit` link for any post. Click `Preview` to see the markdown output and `Save` to have the post converted to html.
 
 ### Images
 
