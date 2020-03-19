@@ -4,7 +4,7 @@
     <h4>Comments</h4>
     <form id="new-comment" action="comments" method="post">
       <input type="text" name="name" id="name" maxlength="255" placeholder="Name" value=""/>
-      <textarea rows="5" cols="5" name="text" id="text" maxlength="2000" placeholder="Comment"></textarea>
+      <textarea rows="5" cols="5" name="text" id="text" maxlength="<%= config.maxCommentLength %>" placeholder="Comment"></textarea>
       <input type="submit" value="Add comment"/>
     </form>
     

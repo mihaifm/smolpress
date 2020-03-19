@@ -178,7 +178,8 @@ app.post('/:slug/comments', (req, res) => {
     fs.writeFileSync(filename, "[]");
   }
 
-  if (comments.length < builder.getConfig().maxComments) {
+  if (comments.length < builder.getConfig().maxComments &&
+      req.body.text.length >= 2 && req.body.text.length <= builder.getConfig().maxCommentLength) {
     comments.push({name: req.body.name, text: req.body.text, id: Date.now()})
     fs.writeFileSync(filename, JSON.stringify(comments));
 
