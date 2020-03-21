@@ -1,6 +1,6 @@
 {
   "name": "smolpress",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Smol Website Builder",
   "repository": "mihaifm/smolpress",
   "author": "Mihai Ciuraru <hi@mihai.fm>",
@@ -33,6 +33,7 @@
     "marked": "0.8.0",
     "feed": "4.1.0",
     "sharp": "0.25.1",
+    "dayjs": "1.8.23",
     "multer": "1.4.2"
   }
 }

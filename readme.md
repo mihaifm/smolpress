@@ -62,8 +62,7 @@ Now simply visit `localhost:3939` to view your blog and `localhost:3939/admin` t
 
 ###  Authentication
 
-Smolpress provides a single user that is created when visiting `/admin`. User data is stored in a text file called (`data/vault.txt`) which is encrypted with the password available in the 
-SMOLPRESS_VAULT_PASSWORD environment variable. User password is also hashed with sha512.
+Smolpress provides a single user that is created when visiting `/admin`. User data is stored in a text file (`data/vault.txt`) which is encrypted with the password available in the SMOLPRESS_VAULT_PASSWORD environment variable. User password is also hashed with sha512.
 
 ### Markdown editing
 
@@ -77,16 +76,16 @@ Images can be uploaded via the `/media` link in the admin panel. New images are 
 
 Smolpress uses [front-matter](https://jekyllrb.com/docs/front-matter/) to add metadata to your pages. Any property name is supported and can be later used in the theme for customization.
 The `layout`, `title` and `date` properties are supported by the default theme.
+Date format needs to be specified in the `/settings` panel. [Simple](https://day.js.org/docs/en/parse/string-format) and [advanced](https://day.js.org/docs/en/plugin/advanced-format) formats are provided by [dayjs](https://day.js.org/en/).
 
 ### Comments
 
 The comments system is simple and smol. Comments are saved as json files and converted to html when the site is generated. 
-There is no anti-spam protection so use it at your own risk. However it should be fairly straightforward to install something like [Akismet](https://www.npmjs.com/package/akismet-api) to prevent spam.
+There is no anti-spam protection but the number of comments per post and comment length are limited by config options. It should also be fairly straightforward to install something like [Akismet](https://www.npmjs.com/package/akismet-api) to prevent spam.
 
 ### Themes
 
-Themes are based on [ejs](https://ejs.co/) templates and are placed in the `themes` folder. Smolpress has a default theme called `tiny`. Changing the theme can be done in the `/settings`
-panel.     
+Themes are based on [ejs](https://ejs.co/) templates and are placed in the `themes` folder. Smolpress has a default theme called `tiny`. Changing the theme can be done in the `/settings` panel.     
 It is recommended to make a copy of the default theme and naming it to something else before making and customizations to the site. This way you won't lose any changes when updating smolpress.
 
 ### RSS
@@ -105,7 +104,11 @@ RSS feed is generated automatically for the entire site. RSS fields can be confi
 * __SMOLPRESS_THEMES_PATH__ - path to the themes folder. Default: `themes`
 * __SMOLPRESS_KEEP_LIST__ - comma separated list of files/folders to be kept when cleaning the output folder
 
-#### Site metadata
+#### Site options
 
 A smol number of options like site title and description are available in the `config.json` file (stored in the `data` folder). 
 You can edit the file manually or use the `/settings` panel of your website.
+
+## Showcase
+
+[https://mihai.fm](https://mihai.fm)
