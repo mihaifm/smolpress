@@ -1,0 +1,232 @@
+html {
+  font-size: 62.5%;
+  font-family: sans-serif; }
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto; }
+
+main, section {
+  font-size: 1.6rem;
+  line-height: 1.618;
+  max-width: 800px;
+  margin: auto;
+  padding: 13px;
+  color: #555; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto; }
+
+h1 {
+  font-size: 2.35em; }
+
+h2 {
+  font-size: 2.00em; }
+
+h3 {
+  font-size: 1.75em; }
+
+h4 {
+  font-size: 1.5em; }
+
+h5 {
+  font-size: 1.25em; }
+
+h6 {
+  font-size: 1em; }
+
+small, sub, sup {
+  font-size: 75%; 
+}
+
+h1, h2, h3, strong {
+  color: #333; }
+
+a {
+  text-decoration: none;
+  color: #e01a4b; }
+  a:hover {
+    border-bottom: 2px solid #e01a4b; }
+
+blockquote {
+  font-style: italic;
+  margin-left: 1.5em;
+  padding-left: 1em;
+  border-left: 3px solid #1d61b9; }
+
+img {
+  display: inline-block;
+  margin: auto;
+  margin-left: 0;
+  max-width: 100%; }
+
+code, pre {
+  background: #eee;
+  font-family: "Consolas", monospace, monospace, sans-serif; }
+
+pre {
+  display: block;
+  padding: 0.9em;
+  overflow-x: auto; }
+
+code {
+  padding: 0 0.3em;
+  white-space: pre-wrap; }
+
+pre > code {
+  font-size: 0.9em;
+  padding: 0;
+  background-color: transparent;
+  white-space: pre; }
+
+nav {
+  margin: 0; }
+
+  nav a {
+    color: #1d61b9; }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+
+  nav li {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: .25em; }
+  
+    nav li:last-child {
+      margin-right: 0; }
+
+table {
+  text-align: justify;
+  width: 100%;
+  border-collapse: collapse; }
+
+td, th {
+  padding: 0.5em;
+  border-bottom: 1px solid #f1f1f1; }
+
+input, textarea {
+  border: 1px solid #4a4a4a; }
+
+  input:focus, textarea:focus {
+    border: 1px solid #e01a4b; }
+
+textarea {
+  width: 100%; }
+
+.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #e01a4b;
+  color: #f9f9f9;
+  border-radius: 1px;
+  border: 1px solid #e01a4b;
+  cursor: pointer;
+  box-sizing: border-box; }
+
+  .button:focus, .button:hover, button:focus, button:hover, input[type="submit"]:focus, input[type="submit"]:hover,
+  input[type="reset"]:focus, input[type="reset"]:hover, input[type="button"]:focus, input[type="button"]:hover {
+    background-color: #e01a4b;
+    border-color: #e01a4b;
+    color: #f9f9f9;
+    outline: 0; }
+
+textarea, select, input[type] {
+  width: 100%;
+  color: #4a4a4a;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+
+  textarea:focus, select:focus, input[type]:focus {
+    border: 1px solid #1d61b9;
+    outline: 0; }
+
+input[type=checkbox] {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  margin: -.2em .5em 0 0; }
+  
+  input[type="checkbox"]:focus {
+    outline: 1px dotted #1d61b9; }
+
+legend, fieldset {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600;
+  width: 50%; }
+
+label {
+  margin-bottom: .5rem;
+  display: block; }
+
+fieldset p {
+  font-weight: 200; }
+
+input[type=submit] {
+  display: block;
+  width: auto; }
+
+
+.page {
+  margin: 20px auto; }
+
+.page-url {
+  font-size: 1.4em; }
+
+.page-date {
+  color: #999;
+  font-size: 0.8em; }
+
+.page-meta .page-date {
+  margin: 30px auto; }
+
+.page-edit {
+  font-size: 0.9em; }
+
+.new-post fieldset {
+  width: 50%; }
+
+.image-rename label {
+  display: inline-block;
+  font-size: 1.4rem;
+  margin-right: 10px;
+  margin-left: 10px; }
+
+.image-rename input[type=text] {
+  display: inline-block;
+  margin-right: 10px;
+  width: 50%; }
+
+.image-resize label {
+  display: inline-block;
+  font-size: 1.4rem; }
+
+.image-resize label:first-child {
+  margin-right: 10px;
+  margin-left: 10px; }
+
+.image-resize input[type=text] {
+  display: inline-block;
+  width: 50px;
+  margin-right: 10px; }
+
+.new-post-draft label {
+  display: inline-block;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  margin-left: 10px; }

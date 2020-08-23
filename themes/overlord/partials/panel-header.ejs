@@ -1,0 +1,17 @@
+<section>
+  <nav>
+    <ul>
+      <li><div>Hi <%= user.username %></div></li>
+      <li><a href="/">home</a></li>
+
+      <% ['content', 'media', 'settings'].forEach(val => { %>
+        <% if (active == val) { %>
+          <li><%- val %></li>
+        <% } else { %>
+          <li><a href="/<%- val %>"><%- val %></a></li>
+      <% }}) %>
+
+      <li><a href="/logout">logout</a></li>
+    </ul>
+  </nav>
+</section>

@@ -39,7 +39,7 @@ passport.deserializeUser(function(id, cb) {
 // Express app setup
 var app = express();
 
-app.set('views', `${builder.dirs.themes}/${config.theme}/views`);
+app.set('views', `themes/${config.adminTheme}/views`);
 app.set('view engine', 'ejs');
 
 app.use(serveStatic(builder.dirs.out, {
@@ -116,7 +116,7 @@ app.post('/settings', ensureLogin(), (req, res) => {
   var status = builder.setConfig(req.body);
   builder.build();
   config = builder.getConfig();
-  app.set('views', `${builder.dirs.themes}/${config.theme}/views`);
+  app.set('views', `themes/${config.adminTheme}/views`);
   var viewData = Object.assign({user: req.user}, {config: builder.getConfig()});
   viewData.message = status;
   res.render('settings', viewData);
