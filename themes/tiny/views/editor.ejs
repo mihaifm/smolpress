@@ -36,6 +36,7 @@
   <main><article id="render"></article></main>
 
   <script>
+    // preview functionality
     document.getElementById('preview').onclick = function() {
       var contentEl = document.getElementById('content');
       var renderEl = document.getElementById('render');
@@ -50,6 +51,38 @@
         contentEl.style = "";
       }
     }
+
+    // drag and drop support for image uploads
+    let dropArea = document.getElementById('editor-form');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, e => {e.preventDefault(); e.stopPropagation()}, false);
+    });
+
+    dropArea.addEventListener('drop', e => {
+      e.preventDefault();
+
+      let files = e.dataTransfer.files;
+
+      ([...files]).forEach(file => {
+        let formData = new FormData();
+        formData.append('image', file);
+
+        fetch('/upload', {
+          method: 'POST',
+          body: formData
+        })
+        .then(() => {
+          var contentEl = document.getElementById('content');
+          const [start, end] = [contentEl.selectionStart, contentEl.selectionEnd];
+          var markup = `![${file.name}](/media/${file.name}) `;
+          contentEl.setRangeText(markup, start, end, 'select');
+          contentEl.selectionStart = start + markup.length;
+          contentEl.selectionEnd = end + markup.length;
+         })
+        .catch(() => {})
+      })
+    }, false);
   </script>
 </body>
 
