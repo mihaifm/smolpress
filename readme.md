@@ -70,7 +70,7 @@ You can edit any post by visiting the `/admin` panel and clicking the `Edit` lin
 
 ### Images
 
-Images can be uploaded via the `/media` link in the admin panel. New images are stored in `source/media` and copied to `public/media` when the site in generated.
+Images can be uploaded via the `/media` link in the admin panel or by drag and drop in the editor. New images are stored in `source/media` and copied to `public/media` when the site in generated.
 
 ### Page front matter
 

@@ -198,6 +198,16 @@ app.get('/media', ensureLogin(), (req, res) => {
   res.render('media', Object.assign({user: req.user, images}, {config: builder.getConfig()}));
 })
 
+app.post('/cleanup', ensureLogin(), (req, res) => {
+  Object.keys(req.body).forEach(file => {
+    if (fs.existsSync(`${builder.dirs.src}/media/` + file)) {
+      fs.unlinkSync(`${builder.dirs.src}/media/` + file)
+    }
+  })
+
+  res.redirect('/media');
+})
+
 app.post('/upload', ensureLogin(), multer.single('image'), function (req, res) {
   var filename = req.body.rename ? req.body.rename : req.file.originalname;
   var imagePath = `${builder.dirs.src}/media/${filename}`;
