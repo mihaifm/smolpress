@@ -28,7 +28,9 @@
       </div>
       <input type="submit" name="upload" value="Upload"/>
     </fieldset>
+  </form>
 
+  <% if (images.length > 0) { %>
     <form method="post" action="/cleanup">
       <input type="submit" onclick="return confirm('Permanently delete selected media?')" value="Delete selected"/>
       <fieldset>
@@ -44,7 +46,7 @@
         </div>
       </fieldset>
     </form>
-  </form>
+  <% } %>
 </main>
 
 </body>
