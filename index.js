@@ -10,6 +10,7 @@ const sharp = require('sharp');
 const users = require('./lib/users.js');
 const builder = require('./lib/builder.js');
 const utils = require('./lib/utils.js');
+const mailer = require('./lib/mailer.js');
 
 // Build the static site first
 builder.build();
@@ -178,10 +179,25 @@ app.post('/:slug/comments', (req, res) => {
     fs.writeFileSync(filename, "[]");
   }
 
-  if (comments.length < builder.getConfig().maxComments &&
-      req.body.text.length >= 2 && req.body.text.length <= builder.getConfig().maxCommentLength) {
-    comments.push({name: req.body.name, text: req.body.text, id: Date.now()})
+  if (req.body.name && req.body.text &&
+      comments.length < builder.getConfig().maxComments &&
+      req.body.text.length >= 2 && req.body.name.length <= 256 &&
+      req.body.text.length <= builder.getConfig().maxCommentLength) {
+    var pages = builder.getPages();
+    var page = pages.find(el => el.name.indexOf(req.params.slug) == 0)
+
+    if (page && page.comments == false) {
+      return res.redirect("/" + req.params.slug);
+    }
+    
+    var comment = {name: req.body.name, text: req.body.text, id: Date.now(), slug: req.params.slug};
+    comments.push(comment);
     fs.writeFileSync(filename, JSON.stringify(comments));
+
+    config = builder.getConfig();
+    if (config.emailNotifications) {
+      mailer.mail(comment, page, config);
+    }
 
     builder.buildPage(`${req.params.slug}.md`);
   }

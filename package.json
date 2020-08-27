@@ -1,6 +1,6 @@
 {
   "name": "smolpress",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Smol Website Builder",
   "repository": "mihaifm/smolpress",
   "author": "Mihai Ciuraru <hi@mihai.fm>",
@@ -23,17 +23,18 @@
   },
   "dependencies": {
     "express": "4.17.1",
-    "express-session": "1.17.0",
+    "express-session": "1.17.1",
     "connect-ensure-login": "0.1.1",
     "passport": "0.4.1",
     "passport-local": "1.0.0",
     "glob": "7.1.6",
-    "ejs": "3.0.1",
-    "front-matter": "3.1.0",
-    "marked": "0.8.0",
-    "feed": "4.1.0",
-    "sharp": "0.25.1",
-    "dayjs": "1.8.23",
+    "ejs": "3.1.5",
+    "front-matter": "4.0.2",
+    "marked": "1.1.1",
+    "feed": "4.2.1",
+    "sharp": "0.26.0",
+    "dayjs": "1.8.34",
+    "nodemailer": "6.4.11",
     "multer": "1.4.2"
   }
 }

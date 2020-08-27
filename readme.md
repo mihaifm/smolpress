@@ -19,7 +19,7 @@ A node.js server is used to provide some dynamic content like comments, image up
 * Page metadata (front-matter)
 * Drafts
 * Default theme
-* Simple comments system
+* Simple comments system with email notifications
 * RSS feed
 * No database, everthing is file based
 
@@ -86,7 +86,7 @@ There is no anti-spam protection but the number of comments per post and comment
 ### Themes
 
 Themes are based on [ejs](https://ejs.co/) templates and are placed in the `themes` folder. Smolpress has a default theme called `tiny`. Changing the theme can be done in the `/settings` panel.     
-It is recommended to make a copy of the default theme and naming it to something else before making and customizations to the site. This way you won't lose any changes when updating smolpress.
+It is recommended to make a copy of the default theme and naming it to something else before making any customizations to the site. This way you won't lose any changes when updating smolpress.
 
 ### RSS
 
