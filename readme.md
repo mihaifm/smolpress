@@ -81,7 +81,7 @@ Date format needs to be specified in the `/settings` panel. [Simple](https://day
 ### Comments
 
 The comments system is simple and smol. Comments are saved as json files and converted to html when the site is generated. 
-There is no anti-spam protection but the number of comments per post and comment length are limited by config options. It should also be fairly straightforward to install something like [Akismet](https://www.npmjs.com/package/akismet-api) to prevent spam.
+There is no anti-spam protection but the number of comments per post and comment length are limited by config options. You can also moderate comments from the admin panel.
 
 ### Themes
 

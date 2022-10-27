@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <%- include('../partials/admin-head') %>
+</head>
+
+<body>
+
+    <%- include('../partials/panel-header', {active: 'comments' }) %>
+
+        <main>
+            <% for (var comment of comments) { %>
+                <div class="page">
+                    <div class="page-url">
+                        <a href="<%- comment.slug + '#comments' %>"><%- comment.slug %></a>
+                    </div>
+                    <div>
+                        <p>
+                            <strong><%=comment.name %></strong>
+                            <span><%=comment.text %></span>
+                        </p>
+                    </div>
+                    <div class="page-edit">
+                        <% if (comment.approved != true && config.commentsRequireApproval) { %>
+                            <span><a href="<%- '/approve/' + comment.slug + '/' + comment.id %>">Approve</a></span> | 
+                        <% } %>
+                        <span><a href="<%- '/moderate/' + comment.slug + '/' + comment.id %>">Delete</a></span>
+                    </div>
+                    <hr>
+                </div>
+            <% } %>
+
+        </main>
+</body>
+
+</html>

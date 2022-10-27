@@ -183,14 +183,14 @@ app.post('/:slug/comments', (req, res) => {
       comments.length < builder.getConfig().maxComments &&
       req.body.text.length >= 2 && req.body.name.length <= 256 &&
       req.body.text.length <= builder.getConfig().maxCommentLength) {
-    var pages = builder.getPages();
-    var page = pages.find(el => el.name.indexOf(req.params.slug) == 0)
+    const pages = builder.getPages();
+    const page = pages.find(el => el.name.indexOf(req.params.slug) == 0)
 
     if (page && page.comments == false) {
       return res.redirect("/" + req.params.slug);
     }
     
-    var comment = {name: req.body.name, text: req.body.text, id: Date.now(), slug: req.params.slug};
+    const comment = {name: req.body.name, text: req.body.text, id: Date.now(), slug: req.params.slug};
     comments.push(comment);
     fs.writeFileSync(filename, JSON.stringify(comments));
 
@@ -211,7 +211,7 @@ app.get('/media', ensureLogin(), (req, res) => {
     images.push({name: file, url: `/media/${file}`})
   })
 
-  res.render('media', Object.assign({user: req.user, images}, {config: builder.getConfig()}));
+  res.render('media', { user: req.user, images, config: builder.getConfig() });
 })
 
 app.post('/cleanup', ensureLogin(), (req, res) => {
@@ -223,6 +223,63 @@ app.post('/cleanup', ensureLogin(), (req, res) => {
 
   res.redirect('/media');
 })
+
+app.get('/comments', ensureLogin(), (req, res) => {
+  var comments = [];
+
+  fs.readdirSync(`${builder.dirs.data}`).forEach(entry => {
+    if (fs.lstatSync(`${builder.dirs.data}/` + entry).isDirectory()) {
+      const commentsFilePath = `${builder.dirs.data}/` + entry + '/comments.json';
+      if (fs.existsSync(commentsFilePath)) {
+        JSON.parse(fs.readFileSync(commentsFilePath)).forEach(c => comments.push(c))
+        comments.sort((a, b) => (b.id - a.id))
+      }
+    }
+  })
+
+  res.render('comments', { user: req.user, comments, config: builder.getConfig() })
+})
+
+app.get('/moderate/:slug/:cid', ensureLogin(), (req, res) => {
+  var filename = `${builder.dirs.data}/${req.params.slug}/comments.json`;
+
+  var comments = [];
+  if (fs.existsSync(filename)) {
+    comments = JSON.parse(fs.readFileSync(filename));
+  }
+  else {
+    res.redirect('/comments');
+  }
+
+  fs.writeFileSync(filename, JSON.stringify(comments.filter(c => c.id != req.params.cid)));
+
+  builder.buildPage(`${req.params.slug}.md`);
+  
+  res.redirect('/comments');
+});
+
+app.get('/approve/:slug/:cid', ensureLogin(), (req, res) => {
+  var filename = `${builder.dirs.data}/${req.params.slug}/comments.json`;
+
+  var comments = [];
+  if (fs.existsSync(filename)) {
+    comments = JSON.parse(fs.readFileSync(filename));
+  }
+  else {
+    res.redirect('/comments');
+  }
+
+  for (const c of comments) {
+    if (c.id == req.params.cid)
+      c.approved = true;
+  }
+
+  fs.writeFileSync(filename, JSON.stringify(comments));
+
+  builder.buildPage(`${req.params.slug}.md`);
+
+  res.redirect('/comments');
+});
 
 app.post('/upload', ensureLogin(), multer.single('image'), function (req, res) {
   var filename = req.body.rename ? req.body.rename : req.file.originalname;

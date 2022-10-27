@@ -4,7 +4,7 @@
       <li><div>Hi <%= user.username %></div></li>
       <li><a href="/">home</a></li>
 
-      <% ['content', 'media', 'settings'].forEach(val => { %>
+      <% ['content', 'media', 'comments', 'settings'].forEach(val => { %>
         <% if (active == val) { %>
           <li><%- val %></li>
         <% } else { %>
