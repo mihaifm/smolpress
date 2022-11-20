@@ -105,8 +105,9 @@ app.post('/login',
 );
 
 app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
+  req.logout(() => {
+    res.redirect('/');
+  });
 });
 
 app.get('/settings', ensureLogin(), (req, res) => {
@@ -153,6 +154,21 @@ app.get('/:slug/edit', ensureLogin(), (req, res) => {
   else {
     res.redirect("/" + req.params.slug);
   }
+});
+
+app.get('/:slug/delete', ensureLogin(), (req, res) => {
+  var filename = `${builder.dirs.src}/pages/${req.params.slug}.md`;
+  if (fs.existsSync(filename)) {
+    fs.unlinkSync(filename);
+  }
+
+  var datadir = `${builder.dirs.data}/${req.params.slug}`;
+  if (fs.existsSync(datadir)) {
+    fs.rmSync(datadir, {recursive: true});
+  }
+
+  builder.build();
+  res.redirect("/content");
 });
 
 app.post('/:slug/save', ensureLogin(), (req, res) => {
