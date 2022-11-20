@@ -19,6 +19,7 @@ A node.js server is used to provide some dynamic content like comments, image up
 * Page metadata (front-matter)
 * Drafts
 * Default theme
+* Code highlighting
 * Simple comments system with email notifications
 * RSS feed
 * No database, everthing is file based
