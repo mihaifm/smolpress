@@ -33,6 +33,7 @@
       </div>
       <div class="page-edit">
         <a href="<%- page.url + '/edit' %>">Edit</a>
+        <a onclick="return confirm('Permanently delete post?')" href="<%- page.url + '/delete' %>">Delete</a>
       </div>
     </div>
   <% } %>

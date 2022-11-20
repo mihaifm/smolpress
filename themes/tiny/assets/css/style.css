@@ -68,18 +68,15 @@ code, pre {
   background: #eee;
   font-family: "Consolas", monospace, monospace, sans-serif; }
 
-pre {
-  display: block;
-  padding: 0.9em;
-  overflow-x: auto; }
-
 code {
   padding: 0 0.3em;
   white-space: pre-wrap; }
 
 pre > code {
+  display: block;
+  padding: 0.9em;
+  overflow-x: auto;
   font-size: 0.9em;
-  padding: 0;
   background-color: transparent;
   white-space: pre; }
 
@@ -230,9 +227,6 @@ input[type=submit] {
 
 .page-meta .page-date {
   margin: 30px auto; }
-
-.page-edit {
-  font-size: 0.9em; }
 
 .new-post fieldset {
   width: 50%; }

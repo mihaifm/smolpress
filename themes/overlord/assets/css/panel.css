@@ -198,6 +198,9 @@ input[type=submit] {
 .page-edit {
   font-size: 0.9em; }
 
+.page-edit a {
+    margin-right: 12px; }
+
 .new-post fieldset {
   width: 50%; }
 

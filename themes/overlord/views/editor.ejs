@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/editor.css">
+    <link rel="stylesheet" href="/css/highlight.css">
     <script src="/js/marked.min.js"></script>
+    <script src="/js/highlight.min.js"></script>
 </head>
 
 <body>
@@ -43,6 +45,15 @@
       var content = contentEl.value.replace(/^-+\n[\s\S]*-+\n/, "");
 
       if (renderEl.innerHTML.length == 0) {
+        marked.setOptions({
+          renderer: new marked.Renderer(),
+          highlight: function(code, lang) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(code, { language }).value;
+          },
+          langPrefix: 'hljs language-'
+        });
+
         renderEl.innerHTML = marked(content);
         contentEl.style = "display: none";
       }
