@@ -51,6 +51,9 @@ a {
   color: #e01a4b; }
   a:hover {
     border-bottom: 2px solid #e01a4b; }
+  a > img {
+    display: block;
+    margin: auto; }
 
 blockquote {
   font-style: italic;
